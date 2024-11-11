@@ -34,7 +34,7 @@ def generate_response(probability, query, relevant_info):
     {' '.join(relevant_info)}
 
     Provide a comprehensive explanation of the person's current state regarding autism 
-    and what they should do next. Be empathetic and informative in your response.
+    and what they should do next. Be empathetic and informative in your response. keep your response short.
     """
 
     response = model.generate_content(prompt)
@@ -47,7 +47,7 @@ def run_rag_model(keras_probability, user_query, data_path='./autism-info-csv.cs
 
     # Load data and create embeddings
     df = load_data(data_path)
-    embedding_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+    embedding_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
     embeddings = create_embeddings(df, embedding_model)
 
     # Retrieve relevant information
